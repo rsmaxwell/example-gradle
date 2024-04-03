@@ -5,11 +5,9 @@ if [ -z "${BUILD_ID}" ]; then
     BUILD_ID="(none)"
     VERSION="0.0.1-SNAPSHOT"
     REPOSITORY=snapshots
-    REPOSITORYID=snapshots
 else
     VERSION="0.0.1.$((${BUILD_ID}))"
     REPOSITORY=releases
-    REPOSITORYID=releases
 fi
 
 
