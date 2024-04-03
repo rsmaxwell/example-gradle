@@ -10,4 +10,4 @@ BUILD_DIR=${PROJECT_DIR}/app/build
 
 cd ${PROJECT_DIR}
 
-gradle publish -DrepositoryName=${REPOSITORY} -DprojectVersion=${VERSION} 
+./gradlew publish -DrepositoryName=${REPOSITORY} -DprojectVersion=${VERSION} 
