@@ -4,4 +4,4 @@
 # Ignore Gradle build output directory
 build
 
-app/src/main/java/com/Version.java
+app/src/main/java/com/rsmaxwell/example/Version.java
