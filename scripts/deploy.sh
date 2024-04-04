@@ -8,23 +8,7 @@ BUILD_DIR=${PROJECT_DIR}/app/build
 
 . ${BUILD_DIR}/buildinfo
 
-
 cd ${PROJECT_DIR}
 
-echo "current working directory"
-pwd
-ls -al
 
-echo "id: $(id -a)"
-echo "HOME: ${HOME}"
-ls -al ${HOME}
-
-id -a 
-echo "${HOME}/gradle.properties:"
-cat ${HOME}/gradle.properties
-
-echo "GRADLE_USER_HOME: $GRADLE_USER_HOME"
-
-./gradlew properties --debug
-
-./gradlew publish -DrepositoryName=${REPOSITORY} -DprojectVersion=${VERSION} --debug
+./gradlew publish -DrepositoryName=${REPOSITORY} -DprojectVersion=${VERSION}
