@@ -15,18 +15,16 @@ echo "current working directory"
 pwd
 ls -al
 
-echo "BUILD_DIR: ${BUILD_DIR}"
-ls -al ${BUILD_DIR}
-
 echo "id: $(id -a)"
 echo "HOME: ${HOME}"
 ls -al ${HOME}
 
 id -a 
-touch ${HOME}/fred.txt
-echo "Hello World!" > ${HOME}/bloggs.txt
+echo "${HOME}/gradle.properties:"
+cat ${HOME}/gradle.properties
 
-ls -al ${HOME}
+echo "GRADLE_USER_PATH: $GRADLE_USER_PATH"
 
+./gradlew properties
 
 ./gradlew publish -DrepositoryName=${REPOSITORY} -DprojectVersion=${VERSION} 
