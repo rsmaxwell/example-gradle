@@ -23,8 +23,8 @@ echo "HOME: ${HOME}"
 ls -al ${HOME}
 
 id -a 
-touch fred.txt
-echo "Hello World!"
+touch ${HOME}/fred.txt
+echo "Hello World!" > ${HOME}/bloggs.txt
 
 ls -al ${HOME}
 
