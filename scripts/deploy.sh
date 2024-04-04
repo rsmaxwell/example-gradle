@@ -15,14 +15,18 @@ echo "current working directory"
 pwd
 ls -al
 
-echo "PROJECT_DIR: ${PROJECT_DIR}"
-ls -al ${PROJECT_DIR}
-
 echo "BUILD_DIR: ${BUILD_DIR}"
 ls -al ${BUILD_DIR}
 
 echo "id: $(id -a)"
 echo "HOME: ${HOME}"
 ls -al ${HOME}
+
+id -a 
+touch fred.txt
+echo "Hello World!"
+
+ls -al ${HOME}
+
 
 ./gradlew publish -DrepositoryName=${REPOSITORY} -DprojectVersion=${VERSION} 
