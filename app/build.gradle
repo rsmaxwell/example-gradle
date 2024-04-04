@@ -35,7 +35,7 @@ publishing {
         mavenJava(MavenPublication) {
             artifactId = projectArtifactId
             groupId = projectGroupId
-            version = projectVersion
+            version = project.getProperties().get("projectVersion")
 
             from components["java"]
         }
@@ -44,8 +44,8 @@ publishing {
     repositories {
         maven {
             credentials {
-                username = mavenUser
-                password = mavenPassword
+                username = project.getProperties().get("mavenUser")
+                password = project.getProperties().get("mavenPassword")
             }
 
             url = "${repositoryURL}/${repositoryPath}/${repositoryName}"
