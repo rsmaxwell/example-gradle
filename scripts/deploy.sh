@@ -23,8 +23,8 @@ id -a
 echo "${HOME}/gradle.properties:"
 cat ${HOME}/gradle.properties
 
-echo "GRADLE_USER_PATH: $GRADLE_USER_PATH"
+echo "GRADLE_USER_HOME: $GRADLE_USER_HOME"
 
-./gradlew properties
+./gradlew properties --debug
 
-./gradlew publish -DrepositoryName=${REPOSITORY} -DprojectVersion=${VERSION} 
+./gradlew publish -DrepositoryName=${REPOSITORY} -DprojectVersion=${VERSION} --debug
