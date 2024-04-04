@@ -30,12 +30,19 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+
+ext {
+    projectVersion = findProperty('projectVersion') ?: projectVersion
+    repositoryName = findProperty('repositoryName') ?: repositoryName
+}
+
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             artifactId = projectArtifactId
             groupId = projectGroupId
-            version = project.getProperties().get("projectVersion")
+            version = project.ext.projectVersion
 
             from components["java"]
         }
@@ -48,7 +55,7 @@ publishing {
                 password = project.getProperties().get("mavenPassword")
             }
 
-            url = "${repositoryURL}/${repositoryPath}/${repositoryName}"
+            url = "${repositoryURL}/${repositoryPath}/${project.ext.repositoryName}"
         }
     }
 }
