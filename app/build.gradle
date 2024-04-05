@@ -30,7 +30,6 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-
 ext {
     projectVersion = project.hasProperty('projectVersion') ? project.getProperty('projectVersion') : projectVersion_default
     repositoryName = project.hasProperty('repositoryName') ? project.getProperty('repositoryName') : repositoryName_default
