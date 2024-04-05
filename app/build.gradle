@@ -32,17 +32,16 @@ tasks.named('test') {
 
 
 ext {
-    projectVersion = findProperty('projectVersion') ?: projectVersion
-    repositoryName = findProperty('repositoryName') ?: repositoryName
+    projectVersion = project.hasProperty('projectVersion') ? project.getProperty('projectVersion') : projectVersion_default
+    repositoryName = project.hasProperty('repositoryName') ? project.getProperty('repositoryName') : repositoryName_default
 }
-
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             artifactId = projectArtifactId
             groupId = projectGroupId
-            version = project.ext.projectVersion
+            version = projectVersion
 
             from components["java"]
         }
@@ -51,11 +50,11 @@ publishing {
     repositories {
         maven {
             credentials {
-                username = project.getProperties().get("mavenUser")
-                password = project.getProperties().get("mavenPassword")
+                username = mavenUser
+                password = mavenPassword
             }
 
-            url = "${repositoryURL}/${repositoryPath}/${project.ext.repositoryName}"
+            url = "${repositoryURL}/${repositoryPath}/${repositoryName}"
         }
     }
 }
