@@ -11,4 +11,4 @@ BUILD_DIR=${PROJECT_DIR}/app/build
 cd ${PROJECT_DIR}
 
 set -x 
-./gradlew publish -PrepositoryName=${REPOSITORY} -PprojectVersion=${VERSION} --info
+./gradlew publish -PrepositoryName=${REPOSITORY} -PprojectVersion=${VERSION} --no-daemon --info

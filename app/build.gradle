@@ -53,7 +53,7 @@ publishing {
                 password = mavenPassword
             }
 
-            url = "${repositoryURL}/${repositoryPath}/${repositoryName}"
+            url = "${repositoryBaseURL}/${repositoryName}"
         }
     }
 }
