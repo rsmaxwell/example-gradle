@@ -42,7 +42,7 @@ BASEDIR=$(dirname "$0")
 SCRIPT_DIR=$(cd $BASEDIR && pwd)
 PROJECT_DIR=$(dirname $SCRIPT_DIR)
 SOURCE_DIR=${PROJECT_DIR}/src
-BUILD_DIR=${PROJECT_DIR}/build
+BUILD_DIR=${PROJECT_DIR}/app/build
 TEMPLATES_DIR=${PROJECT_DIR}/templates
 
 
