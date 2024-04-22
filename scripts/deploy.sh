@@ -8,10 +8,9 @@ BUILD_DIR=${PROJECT_DIR}/app/build
 
 . ${BUILD_DIR}/buildinfo
 
+
 cd ${PROJECT_DIR}
 
-
-./gradlew publish  --no-daemon --info \
-    -PbaseURL=${MAVEN_REPOSITORY_BASE_URL} \
+./gradlew publish --no-daemon --info \
     -PrepositoryName=${REPOSITORY} \
     -PprojectVersion=${VERSION}
