@@ -31,8 +31,14 @@ tasks.named('test') {
 }
 
 ext {
-    projectVersion = project.hasProperty('projectVersion') ? project.getProperty('projectVersion') : projectVersion_default
-    repositoryName = project.hasProperty('repositoryName') ? project.getProperty('repositoryName') : repositoryName_default
+    def buildId = (project.findProperty('buildID') ?: System.getenv('BUILD_ID'))?.toString()
+
+    repositoryName = project.findProperty('repositoryName') ?: repositoryName_default
+
+    def baseVersion = project.findProperty('projectVersion') ?: projectVersion_default
+    projectVersion = buildId ? "${baseVersion}-build-${buildId}" : baseVersion
+
+    projectArtifactId = projectArtifactId_default
 }
 
 publishing {
