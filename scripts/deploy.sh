@@ -17,6 +17,7 @@ whoami
 echo "home: $HOME"
 ls -al /home/gradle/.gradle
 cat /home/gradle/.gradle/gradle.properties
+./gradlew -version
 set +x
 
 ./gradlew publish --no-daemon --info \
