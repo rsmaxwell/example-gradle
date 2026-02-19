@@ -12,15 +12,8 @@ BUILD_DIR=${PROJECT_DIR}/app/build
 cd ${PROJECT_DIR}
 
 
-set -x
-echo "whoami=$(whoami)"
-echo "HOME=$HOME"
-echo "GRADLE_USER_HOME=${GRADLE_USER_HOME:-<unset>}"
-ls -al "$HOME/.gradle" || true
-test -f "$HOME/.gradle/gradle.properties" && cat "$HOME/.gradle/gradle.properties" || echo "no gradle.properties in HOME"
-set +x
+BASE_VERSION="${VERSION%-build-${BUILD_ID}}"
 
 ./gradlew publish --no-daemon --info \
     -PrepositoryName="${REPOSITORY}" \
-    -PprojectVersion="${VERSION}" \
-    -PbuildID="${BUILD_ID}"
+    -PprojectVersion="${BASE_VERSION}"
