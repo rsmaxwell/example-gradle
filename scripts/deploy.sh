@@ -13,11 +13,11 @@ cd ${PROJECT_DIR}
 
 
 set -x
-whoami
-echo "home: $HOME"
-ls -al /home/gradle/.gradle
-cat /home/gradle/.gradle/gradle.properties
-./gradlew -version
+echo "whoami=$(whoami)"
+echo "HOME=$HOME"
+echo "GRADLE_USER_HOME=${GRADLE_USER_HOME:-<unset>}"
+ls -al "$HOME/.gradle" || true
+test -f "$HOME/.gradle/gradle.properties" && cat "$HOME/.gradle/gradle.properties" || echo "no gradle.properties in HOME"
 set +x
 
 ./gradlew publish --no-daemon --info \
