@@ -76,19 +76,15 @@ else
 fi
 
 # ----------------------------
-# 
+# s
 # ----------------------------
 
-if [ -f ${HOME}/.m2/maven-repository-info ]; then
-    . ${HOME}/.m2/maven-repository-info
-elif [ -f ./maven-repository-info ]; then
-    . ./maven-repository-info
-fi
+echo "${HOME}/.m2"
+ls -al "${HOME}/.m2"
 
-if [ -z "${MAVEN_REPOSITORY_BASE_URL}" ]; then
-    echo "'MAVEN_REPOSITORY_BASE_URL' is not defined"
-    exit 1
-fi
+pwd
+echo "."
+ls -al "."
 
 
 BASEDIR=$(dirname "$0")
