@@ -32,7 +32,7 @@ tasks.named('test') {
 
 ext {
     repositoryName = findProperty('repositoryName') ?: repositoryName_default
-    projectVersion = findProperty('version') ?: version_default
+    projectVersion = findProperty('projectVersion') ?: version_default
 }
 
 publishing {
