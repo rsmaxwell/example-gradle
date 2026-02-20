@@ -31,17 +31,8 @@ tasks.named('test') {
 }
 
 ext {
-    buildId = (findProperty('buildID') ?: System.getenv('BUILD_ID'))?.toString()
-
     repositoryName = findProperty('repositoryName') ?: repositoryName_default
-
-    baseVersion = findProperty('projectVersion') ?: projectVersion_default
-    projectVersion = buildId ? "${baseVersion}-build-${buildId}" : baseVersion
-
-    projectArtifactId = projectArtifactId_default
-
-    mavenUser = findProperty('mavenUser') ?: System.getenv('MAVEN_USER')
-    mavenPassword = findProperty('mavenPassword') ?: System.getenv('MAVEN_PASSWORD')
+    projectVersion = findProperty('version') ?: version_default
 }
 
 publishing {
@@ -58,18 +49,9 @@ publishing {
         maven {
             url = uri("${mavenRepositoryBaseURL}/${repositoryName}")
             credentials {
-                username = project.ext.mavenUser
-                password = project.ext.mavenPassword
+                username = mavenUser
+                password = mavenPassword
             }
-        }
-    }
-}
-
-// Only enforce creds for publishing tasks:
-tasks.withType(PublishToMavenRepository).configureEach {
-    doFirst {
-        if (!project.ext.mavenUser || !project.ext.mavenPassword) {
-            throw new GradleException("Missing Maven credentials. Set mavenUser/mavenPassword or MAVEN_USER/MAVEN_PASSWORD.")
         }
     }
 }
