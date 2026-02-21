@@ -30,27 +30,35 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-ext {
-    repositoryName = findProperty('repositoryName') ?: repositoryName_default
-    projectVersion = findProperty('projectVersion') ?: version_default
-}
+
+
+def repoBase = findProperty("mavenRepoBaseUrl")
+if (!repoBase) throw new GradleException("mavenRepoBaseUrl is not set (project gradle.properties)")
+
+def pubUser = findProperty("mavenUser")
+if (!repoBase) throw new GradleException("mavenUser is not set (~/$HOME/gradle.properties)")
+
+def pubPassword = findProperty("mavenPassword")
+if (!repoBase) throw new GradleException("mavenPassword is not set (~/$HOME/gradle.properties)")
+
+
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = projectArtifactId
-            groupId = projectGroupId
-            version = projectVersion
+            groupId = project.group.toString()
+            artifactId = project.artifact.toString()
+            version = project.version.toString()
             from components.java
         }
     }
 
     repositories {
         maven {
-            url = uri("${mavenRepositoryBaseURL}/${repositoryName}")
+            url = uri("${repoBase}/${findProperty('repo') ?: 'snapshots'}")
             credentials {
-                username = mavenUser
-                password = mavenPassword
+                username = pubUser
+                password = pubPassword
             }
         }
     }
